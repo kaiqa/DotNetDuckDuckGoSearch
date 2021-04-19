@@ -11,9 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-
+ 
 steps:
 - task: NuGetToolInstaller@1
 
