@@ -5,6 +5,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using System.Threading;
+using OpenQA.Selenium.Support.UI;
+
 
 namespace DotNetDuckDuckGoSearch
 {
@@ -24,6 +27,7 @@ namespace DotNetDuckDuckGoSearch
 
         [TestMethod]
         [TestCategory("Chrome")]
+
         public void DotNetDuckDuckGoSearchTest()
         {
             driver.Navigate().GoToUrl(appURL + "/");
@@ -57,10 +61,14 @@ namespace DotNetDuckDuckGoSearch
             switch (browser)
             {
                 case "Chrome":
-                    driver = new ChromeDriver();
+                    ChromeOptions headlessChrome = new ChromeOptions();
+                     headlessChrome.AddArgument("--headless");
+                    driver = new ChromeDriver(headlessChrome);
                     break;
                 case "Firefox":
-                    driver = new FirefoxDriver();
+                    FirefoxOptions headlessFireFox = new FirefoxOptions();
+                    headlessFireFox.AddArgument("--headless");
+                    driver = new FirefoxDriver(headlessFireFox);
                     break;
                 case "IE":
                     driver = new InternetExplorerDriver();
